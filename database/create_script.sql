@@ -153,6 +153,7 @@ CREATE TABLE stays (
 
 CREATE TABLE room_type_has_reservations (
   room_type_tid INT,
+  room_type_name VARCHAR(45),
   reservations_idReservations INT,
   PRIMARY KEY(room_type_tid, reservations_idReservations)
 );

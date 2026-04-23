@@ -50,7 +50,8 @@ INSERT INTO room_type(id, capacity, name, size)
 VALUES (85204, 2, 'Double', 2);
 
 -- filling in room_type_has_reservation to connect room_type to res
-
+-- INSERT INTO room_type_has_reservations(room_type_name, reservations_idReservations)
+-- VALUES()
 -- below I do using INSERT
 
 
