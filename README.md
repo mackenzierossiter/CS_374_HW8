@@ -1,10 +1,10 @@
 # CS_374_HW8
 # Hotel Database
 
-#![Long exposure photo of hotel](./images/HotelMadison.jpg)
-#<br><small>Image source:
-#[hotelmadison.com](https://www.hotelmadison.com/)
-#</small>
+![Long exposure photo of hotel](./images/HotelMadison.jpg)
+<br><small>Image source:
+[hotelmadison.com](https://www.hotelmadison.com/)
+</small>
 
 
 ## Data Requirements
