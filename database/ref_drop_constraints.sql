@@ -32,4 +32,5 @@ ALTER TABLE stays DROP CONSTRAINT IF EXISTS fk_stays_occupant;
 
 ALTER TABLE guest DROP CONSTRAINT IF EXISTS fk_guest_discount;
 
-ALTER TABLE reservations DROP CONSTRAINT IF EXISTS fk_restraint_room_type;
+ALTER TABLE room_type_has_reservations DROP CONSTRAINT IF EXISTS room_type_reservations_room_type_tid;
+ALTER TABLE room_type_has_reservations DROP CONSTRAINT IF EXISTS room_type_reservations_reservationsId;

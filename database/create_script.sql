@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS features;
 DROP TABLE IF EXISTS rooms;
 DROP TABLE IF EXISTS makes;
 DROP TABLE IF EXISTS has_rate;
+DROP TABLE IF EXISTS room_type_has_reservations;
 DROP TABLE IF EXISTS room_type;
 DROP TABLE IF EXISTS season;
 DROP TABLE IF EXISTS occupant;
@@ -16,6 +17,7 @@ DROP TABLE IF EXISTS bill;
 DROP TABLE IF EXISTS reservations;
 DROP TABLE IF EXISTS guest;
 DROP TABLE IF EXISTS discount;
+
 
 
 CREATE TABLE discount (
@@ -146,4 +148,11 @@ CREATE TABLE stays (
   occupant_pid INT,
   from_date TIMESTAMP,
   to_date TIMESTAMP
+);
+
+
+CREATE TABLE room_type_has_reservations (
+  room_type_tid INT,
+  reservations_idReservations INT,
+  PRIMARY KEY(room_type_tid, reservations_idReservations)
 );

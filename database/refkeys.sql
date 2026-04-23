@@ -82,6 +82,12 @@ ALTER TABLE guest
 ADD CONSTRAINT fk_guest_discount
 FOREIGN KEY (discount_category) REFERENCES discount(id);
 
-ALTER TABLE references
-ADD CONSTRAINT fk_restraint_room_type
-FOREIGN KEY (room_type_name) REFERENCES room_type(name);
+
+ALTER TABLE room_type_has_reservations
+ADD CONSTRAINT room_type_reservations_room_type_tid
+FOREIGN KEY (room_type_tid) REFERENCES room_type(id);
+
+
+ALTER TABLE room_type_has_reservations
+ADD CONSTRAINT room_type_reservations_reservationsId
+FOREIGN KEY (reservations_idReservations) REFERENCES reservations(id);
