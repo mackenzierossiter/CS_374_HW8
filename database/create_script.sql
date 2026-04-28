@@ -39,6 +39,7 @@ CREATE TABLE guest (
 
 CREATE TABLE reservations (
   id INT PRIMARY KEY,
+  room_type_name VARCHAR(45),
   start_date DATE NOT NULL,
   end_date DATE NOT NULL
 );
