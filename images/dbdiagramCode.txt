@@ -1,0 +1,246 @@
+
+Table guest {
+  pid INT [pk, not null]
+  id_number INT [not null]
+  id_type VARCHAR(45) [not null]
+  address VARCHAR(1064) [not null]
+  mobile_phone VARCHAR(12) [not null]
+  home_phone VARCHAR(45)
+  discount_category VARCHAR(45)
+  name VARCHAR(45) [not null]
+}
+
+Table discount {
+  id INT [pk, not null]
+  discount_category VARCHAR(45)
+  discount_amount DECIMAL
+
+  Indexes {
+    (id) [pk]
+    discount_category [name: "fk_discount_Guest1"]
+
+  }
+}
+
+Table reservations {
+  idReservations INT [pk, not null]
+  room_type_name VARCHAR(45)
+  start DATE [not null]
+  end DATE [not null]
+}
+
+Table bill {
+  bid INT [not null]
+  total_price INT [not null]
+  reservation_id INT [not null]
+  guest_pid INT [not null]
+
+  Indexes {
+    (bid) [pk]
+    reservation_id [name: "fk_Bill_Reservations1_idx"]
+    guest_pid [name: "fk_Bill_Guest1_idx"]
+  }
+}
+
+
+
+Table charge_to {
+  idChargeTo INT [not null]
+  date_charged DATETIME [not null]
+  quantity INT [not null]
+  bill_bid INT [not null]
+
+  Indexes {
+    (idChargeTo, bill_bid) [pk]
+  }
+}
+
+Table room_service {
+  id INT [not null]
+  name VARCHAR(45) [not null]
+  unit_price INT [not null]
+  description VARCHAR(1064)
+  charge_to_id INT [not null]
+
+  Indexes {
+    (id, charge_to_id) [pk]
+  }
+}
+
+Table hotel {
+  hid INT [pk, not null]
+  name VARCHAR(45) [not null]
+  address VARCHAR(1064) [not null]
+  features VARCHAR(1064)
+}
+
+Table phone_number {
+  hotel_hid INT [not null]
+  phone_number VARCHAR(12) [not null]
+
+  Indexes {
+    (hotel_hid, phone_number) [pk]
+  }
+}
+
+Table guests_in_hotel {
+  hotel_hid INT [not null]
+  guest_pid VARCHAR(45) [not null]
+
+  Indexes {
+    (hotel_hid, guest_pid) [pk]
+  }
+}
+
+Table occupant {
+  pid INT [pk, not null]
+  name VARCHAR(45) [not null]
+  isAdult TINYINT [not null]
+}
+
+Table season {
+  id INT [not null]
+  name VARCHAR(45) [not null]
+  start_date VARCHAR(45) [not null]
+  end_date VARCHAR(45) [not null]
+  hotel_hid INT [not null]
+
+  Indexes {
+    (id, hotel_hid) [pk]
+    hotel_hid [name: "fk_Season_Hotel1_idx"]
+  }
+}
+
+
+Table room_type {
+  id INT [pk, not null]
+  capacity INT [not null]
+  name VARCHAR(45)
+  size INT [not null]
+}
+
+Table has_rate {
+  id INT [pk, not null]
+  price INT [not null]
+  season_sid INT [not null]
+  room_Type_tid INT [not null]
+  day_of_the_week_day_name VARCHAR(45) [not null]
+}
+
+Table makes {
+  guest_pid INT [not null]
+  reservation_id INT [not null]
+
+  Indexes {
+    (reservation_id, guest_pid) [pk]
+    reservation_id [name: "fk_Guest_has_Reservations_Reservations1_idx"]
+    guest_pid [name: "fk_Guest_has_Reservations_Guest1_idx"]
+  }
+}
+
+Table rooms {
+  room_number INT [not null]
+  floor INT [not null]
+  hotel_id INT [not null]
+  room_type_tid INT [not null]
+
+  Indexes {
+    (room_number, room_type_tid, hotel_id) [pk]
+  }
+}
+
+Table features {
+  id INT [pk, not null]
+  room_type_tid INT [not null]
+  feature_name VARCHAR(45) [not null]
+}
+
+Table reservations_rooms {
+  reservation_id INT
+  rooms_room_number INT
+  hotel_id INT
+
+  Indexes {
+    (reservation_id, rooms_room_number) [pk]
+    rooms_room_number [name: "fk_Reservations_has_rooms_rooms1_idx"]
+    reservation_id [name: "fk_Reservations_has_rooms_Reservations1_idx"]
+    hotel_id [name: "fk_reservations_rooms_room_hotel_id"]
+  }
+}
+
+Table room_type_has_reservations {
+  room_type_tid INT
+  room_type_name VARCHAR(45)
+  reservations_idReservations INT
+
+  Indexes {
+    (room_type_tid, reservations_idReservations) [pk]
+    reservations_idReservations [name: "fk_RoomType_has_Reservations_Reservations1_idx"]
+    room_type_tid [name: "fk_RoomType_has_Reservations_RoomType1_idx"]
+  }
+}
+
+Table stays {
+  id INT [pk]
+  guest_pid INT [not null]
+  room_number INT [not null]
+  hotel_id INT [not null]
+  to_date DATETIME [not null]
+  from_date DATETIME [not null]
+  occupant_pid INT
+
+  Indexes {
+    (room_number) [name: "fk_Guest_has_rooms_rooms1_idx"]
+    guest_pid [name: "fk_Guest_has_rooms_Guest1_idx"]
+    occupant_pid [name: "fk_Guest_has_rooms_Occupant1_idx"]
+    hotel_id [name: "fk_stays_room_hotel_id"]
+  }
+}
+
+Ref fk_Bill_Reservations1:reservations.idReservations < bill.reservation_id [update: no action, delete: no action]
+
+Ref fk_stays_room_hotel_id:stays.hotel_id < rooms.hotel_id [update: no action, delete: no action]
+
+Ref fk_reservations_rooms_room_hotel_id:reservations_rooms.hotel_id < rooms.hotel_id [update: no action, delete: no action]
+
+Ref fk_Bill_Guest1:guest.pid < bill.guest_pid [update: no action, delete: no action]
+
+Ref fk_discount_Guest1: guest.discount_category < discount.discount_category [update: no action, delete: no action]
+
+Ref to_Bill1:bill.(bid) < charge_to.(bill_bid) [update: no action, delete: no action]
+
+Ref Service_Charge:charge_to.idChargeTo < room_service.charge_to_id [update: no action, delete: no action]
+
+Ref Number_Hotel:hotel.hid < phone_number.hotel_hid [update: no action, delete: no action]
+
+Ref fk_Guests_Hotel1:hotel.hid < guests_in_hotel.hotel_hid [update: no action, delete: no action]
+
+Ref fk_Guests_Hotel_Guest:guest.pid < guests_in_hotel.guest_pid [update: no action, delete: no action]
+
+Ref fk_Season_Hotel1:hotel.hid < season.hotel_hid [update: no action, delete: no action]
+
+Ref Rate_Season1:season.id < has_rate.season_sid [update: no action, delete: no action]
+
+Ref Rate_RoomType1:room_type.id < has_rate.room_Type_tid [update: no action, delete: no action]
+
+Ref fk_Guest_has_Reservations_Guest1:guest.pid < makes.guest_pid [update: no action, delete: no action]
+
+Ref fk_Guest_has_Reservations_Reservations1:reservations.idReservations < makes.reservation_id [update: no action, delete: no action]
+
+Ref fk_rooms_RoomType1:room_type.id < rooms.room_type_tid [update: no action, delete: no action]
+
+Ref fk_features_RoomType1:room_type.id < features.room_type_tid [update: no action, delete: no action]
+
+Ref fk_Reservations_has_rooms_Reservations1:reservations.idReservations < reservations_rooms.reservation_id [update: no action, delete: no action]
+
+Ref fk_Reservations_has_rooms_rooms1:rooms.room_number < reservations_rooms.rooms_room_number [update: no action, delete: no action]
+
+Ref fk_RoomType_has_Reservations_RoomType1:room_type.id < room_type_has_reservations.room_type_tid [update: no action, delete: no action]
+
+Ref fk_RoomType_has_Reservations_Reservations1:reservations.idReservations < room_type_has_reservations.reservations_idReservations [update: no action, delete: no action]
+
+Ref fk_Guest_has_rooms_Guest1:guest.pid < stays.guest_pid [update: no action, delete: no action]
+
+Ref fk_Guest_has_rooms_rooms1:rooms.(room_number) < stays.(room_number) [update: no action, delete: no action]
+
+Ref fk_Guest_has_rooms_Occupant1:occupant.pid < stays.occupant_pid [update: no action, delete: no action]
