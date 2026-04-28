@@ -126,32 +126,21 @@ LEFT JOIN reservations_rooms ON rooms.hotel_id = reservations_rooms.hotel_id
 		AND rooms.room_number = reservations_rooms.room_number
 		WHERE room_type.name = 'Double' 
 			AND reservations_rooms.hotel_id IS NULL 
-			AND reservations_rooms.room_number IS NULL
+			AND reservations_rooms.room_number IS NULL;
 
 
+-- Create Mrs. Smith's reservation
+DELETE from reservations_rooms
+WHERE reservation_id = 85930 AND room_number = 491;
 
-				
+INSERT INTO reservations_rooms(reservation_id, hotel_id, room_number)
+VALUES (85930, 89604, 491);
 
+-- Create Mrs. Smith's stay
+DELETE FROM stays
+WHERE id = 28424;
 
+INSERT INTO stays(id, guest_pid, hotel_id, room_number, occupant_pid, from_date, to_date)
+VALUES(28424, 23450, 89604, 491, 65372, '04-21-2026', '04-25-2026');
 
-
-
-
-
-
-
--- -- fill in the reservations_rooms table
--- delete from reservations_rooms
--- where reservation_id = 85930;
-
--- INSERT into reservations_rooms(reservation_id, hotel_id, room_number)
--- VALUES(85930, 89604, 438);
-
-
--- -- fill the stays table
--- delete from stays 
--- where id = 749584;
-
--- INSERT into stays(id, guest_pid, hotel_id, room_number, occupant_pid, from_date, to_date)
--- VALUES(749584, 23450, 89604, 438, 65372, '04-21-2026', '04-25-2026');
 
