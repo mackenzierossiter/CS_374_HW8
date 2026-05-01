@@ -55,6 +55,33 @@ VALUES
 	(2, 1, 'Mon', 100), (2, 1, 'Tue', 100), (2, 1, 'Wed', 110), (2, 1, 'Thu', 110), (2, 1, 'Fri', 130), (2, 1, 'Sat', 150), (2, 1, 'Sun', 120),
 	(2, 2, 'Mon', 180), (2, 2, 'Tue', 180), (2, 2, 'Wed', 190), (2, 2, 'Thu', 190), (2, 2, 'Fri', 220), (2, 2, 'Sat', 250), (2, 2, 'Sun', 200);
 
+-- Query 3 guest
+INSERT INTO guest(pid, name, id_number, id_type, address, mobile_phone, home_phone, discount_category)
+VALUES (09238, 'Barbara Manatee', 2905792, 'passport', '1 Ocean Lane, Harrisonburg, VA', '521-234-5892', '242-443-3579', 1);
+
+INSERT INTO occupant(pid, name, is_adult)
+VALUES (09238, 'Barbara Manatee', TRUE);
+
+INSERT INTO reservations(id, start_date, end_date)
+VALUES (02485, '04-26-2026', '04-28-2026');
+
+INSERT INTO makes(guest_pid, reservation_id)
+VALUES(09238, 02485);
+
+INSERT INTO reservations_rooms(reservation_id, hotel_id, room_number)
+VALUES (02485, 2, 202);
+
+INSERT INTO stays(guest_pid, hotel_id, room_number, occupant_pid, from_date, to_date)
+VALUES (09238, 2, 202, 09238, '04-26-2026', '04-28-2026');
+
+INSERT INTO guests_in_hotel(hotel_id, guest_id)
+VALUES (2, 09238)
+
+INSERT INTO bill(id, total_price, reservation_id, guest_pid)
+VALUES(02458, 0, 02485, 09238);
+
+
+
 -- Guest data (Kenzie)
 -- delete bill so below runs
 delete from bill
