@@ -25,10 +25,10 @@ VALUES
 	(1, 'SILVER', 10.00),
 	(2, 'GOLD', 20.00);
 
-INSERT INTO room_type (id, capacity, size)
+INSERT INTO room_type (id, capacity, name, size)
 VALUES
-	(1, 2, 300),
-	(2, 4, 500);
+	(1, 2, 'Queen', 300),
+	(2, 4, 'King', 500);
 
 INSERT INTO rooms (room_number, hotel_id, room_type_id, floor)
 VALUES
@@ -53,7 +53,9 @@ VALUES
 	(1, 2, 'Mon', 150), (1, 2, 'Tue', 150), (1, 2, 'Wed', 160), (1, 2, 'Thu', 160), (1, 2, 'Fri', 180), (1, 2, 'Sat', 200), (1, 2, 'Sun', 170),
 
 	(2, 1, 'Mon', 100), (2, 1, 'Tue', 100), (2, 1, 'Wed', 110), (2, 1, 'Thu', 110), (2, 1, 'Fri', 130), (2, 1, 'Sat', 150), (2, 1, 'Sun', 120),
-	(2, 2, 'Mon', 180), (2, 2, 'Tue', 180), (2, 2, 'Wed', 190), (2, 2, 'Thu', 190), (2, 2, 'Fri', 220), (2, 2, 'Sat', 250), (2, 2, 'Sun', 200);
+	(2, 2, 'Mon', 180), (2, 2, 'Tue', 180), (2, 2, 'Wed', 190), (2, 2, 'Thu', 190), (2, 2, 'Fri', 220), (2, 2, 'Sat', 250), (2, 2, 'Sun', 200),
+	
+	(4, 2, 'Mon', 180), (4, 2, 'Tue', 180), (4, 2, 'Wed', 190), (4, 2, 'Thu', 190), (4, 2, 'Fri', 220), (4, 2, 'Sat', 250), (4, 2, 'Sun', 200);
 
 -- Query 3 guest
 INSERT INTO guest(pid, name, id_number, id_type, address, mobile_phone, home_phone, discount_category)
@@ -74,8 +76,8 @@ VALUES (02485, 2, 202);
 INSERT INTO stays(guest_pid, hotel_id, room_number, occupant_pid, from_date, to_date)
 VALUES (09238, 2, 202, 09238, '04-26-2026', '04-28-2026');
 
-INSERT INTO guests_in_hotel(hotel_id, guest_id)
-VALUES (2, 09238)
+INSERT INTO guests_in_hotel(hotel_id, guest_pid)
+VALUES (2, 09238);
 
 INSERT INTO bill(id, total_price, reservation_id, guest_pid)
 VALUES(02458, 0, 02485, 09238);
