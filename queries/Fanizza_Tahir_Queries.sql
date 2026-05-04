@@ -6,7 +6,7 @@
 -- Calculates the average cost per night for a gold customer (id=2).
 
 SELECT 
-    rt.tid, 
+    rt.id, 
     rt.capacity, 
     rt.size, 
     ROUND(SUM(rate.price) * (1 - d.discount_amount) / 2.0, 2) AS avg_cost_per_night
