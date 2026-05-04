@@ -77,6 +77,8 @@ After I ran that query, added in data to the reservations_rooms and stays table 
 
 *Describe the queries in detail with screenshots of setup and results*
 For this query, I first inserted data for an extra service used by the guest as well as added Barbara Manatee as a guest and the tables necessary for this query. I then selected the start date, end date, room type, extra services, and total cost for the stay. To calculate the total correctly, I started with the stays table because it has the check in and out dates. I then joined the rooms and room_type tables to determine what type of room the guest stayed in. To calculate the cost per night, i used generate_series to break the stay into individual dates. I then joined the season table to make sure each date matched the correct season and joined the has_rate table to get the price based on room type, season, and day of week. Next, I joined guest and discount to apply the guests discount. I included extra services in a subquery that joins the bill, charge_to, and room_service tables where it calculates the total cost of all extra services and combines their names (if there was more than 1) and the results are joined back to the main query. Finally, I summed the nightly room price with the discount applied and added the extra service total to get the final bill. To update the guest to be checked out, I updated a time stamp on their stay end date for when they checked out and removed them from the guests_in_hotel table.
+The following data image was taken after updating the end time.
+![query3img](./images/query3img.png)
 
 ### Query 4
 *Link the code file(s) here from subdirectory queries*
@@ -84,6 +86,7 @@ For this query, I first inserted data for an extra service used by the guest as 
 
 *Describe the queries in detail with screenshots of setup and results*
 For this query, I added data so there was a room that had two occupants in it at once. I selected the guest that reserved the room, the occupant in the room, and the room number. I started with the occupant table and joined the stays table based on the occupant id. Then, I got the guest that is linked with that stay. Based on out data, I picked a specific room number and date range that had two people staying in one room together. This then output the occupants and the guest who made the reservation for them.
+![query4img](./images/query4img.png)
 
 ### Query 5
 *Link the code file(s) here from subdirectory queries*
