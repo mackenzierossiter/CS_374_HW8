@@ -50,10 +50,13 @@ We changed the data to facilitate the queries, as described in the following sec
 ### Query 1
 *Link the code file(s) here from subdirectory queries*
 
-For example:
-- [workshop_leader.py](./queries/workshop_leader.py)
+[fanizza_tahir_queries.sql](./queries/fanizza_tahir_queries.sql)
 
 *Describe the queries in detail with screenshots of the data setup and the results*
+
+For this query, I created a reservation for a new guest, "Fanizza Tahir," at Hotel Panda for the dates of 2026-07-15 to 2026-07-17. I then wrote a query to identify available room types for these specific dates during the summer season. The query calculates an average cost per night for GOLD tier members by applying a 20% discount to the seasonal base rate. It uses a NOT IN subquery to exclude any room numbers that are already occupied, ensuring the results only show room types that have at least one room remaining.
+
+<img width="1401" height="912" alt="Screenshot 2026-05-04 at 17 38 55" src="https://github.com/user-attachments/assets/ac7e8362-2e5c-432d-98ab-791b4f240ae3" />
 
 ### Query 2
 *Link the code file(s) here from subdirectory queries*
@@ -85,4 +88,11 @@ For this query, I added data so there was a room that had two occupants in it at
 ### Query 5
 *Link the code file(s) here from subdirectory queries*
 
+[fanizza_tahir_queries.sql](./queries/fanizza_tahir_queries.sql)
+
 *Describe the queries in detail with screenshots of setup and results*
+
+This query identifies "frequent travelers" who have completed at least two reservations at two or more different hotel properties during the 2026 calendar year. To test this, I inserted a guest named "Query Five Guest" along with two separate reservations at two distinct hotels (Hotel Panda and Hotel Manatee), each with a corresponding bill. The query joins the guest, makes, reservations, bill, and reservations_rooms tables to aggregate the total spend. The HAVING clause ensures only guests meeting both criteria (multiple reservations and multiple hotel locations) are included in the output.
+
+<img width="1404" height="908" alt="Screenshot 2026-05-04 at 17 39 44" src="https://github.com/user-attachments/assets/2217f41c-d04b-4173-8a17-2358abc73be5" />
+
