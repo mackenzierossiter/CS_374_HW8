@@ -1,5 +1,5 @@
 # CS374 Hotel Database Final Report
-*Kenzie Rossiter, Sarah gerhart, Faz *
+*Kenzie Rossiter, Sarah gerhart, Fanizza Tahir *
 
 ## ER Model
 *insert the image here*
