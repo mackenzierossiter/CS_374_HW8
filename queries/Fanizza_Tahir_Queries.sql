@@ -1,8 +1,6 @@
 -- HW8 Query Set 1 and 5
 -- Fanizza Tahir
 
-BEGIN;
-
 -- Query 1: Reservations
 -- Finds room types available at Hotel A for July 15-17.
 -- Calculates the average cost per night for a gold customer (id=2).
@@ -79,4 +77,3 @@ GROUP BY g.pid, g.name
 HAVING COUNT(DISTINCT r.idReservations) >= 2
     AND COUNT(DISTINCT rr.hotel_id) >= 2;
 
-COMMIT;
