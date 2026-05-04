@@ -94,5 +94,4 @@ For this query, I added data so there was a room that had two occupants in it at
 
 This query identifies "frequent travelers" who have completed at least two reservations at two or more different hotel properties during the 2026 calendar year. To test this, I inserted a guest named "Query Five Guest" along with two separate reservations at two distinct hotels (Hotel Panda and Hotel Manatee), each with a corresponding bill. The query joins the guest, makes, reservations, bill, and reservations_rooms tables to aggregate the total spend. The HAVING clause ensures only guests meeting both criteria (multiple reservations and multiple hotel locations) are included in the output.
 
-<img width="1404" height="908" alt="Screenshot 2026-05-04 at 17 39 44" src="https://github.com/user-attachments/assets/2217f41c-d04b-4173-8a17-2358abc73be5" />
 
