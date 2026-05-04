@@ -25,9 +25,6 @@
 
 *Describe any changes very briefly: for example:*
 
-Sarah:
-We added an occupant who is staying in the same room as a guest. Before, we had all guests staying in their own rooms with no occupant.
-
 Kenzie:
 Added a field to room_type called name
 Added a field to reservations called room_type_name and then added a FK constraint that connect it to the room_type.  This was needed so customers can reserve a certain room type when they make their reservations.
