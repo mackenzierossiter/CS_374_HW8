@@ -60,7 +60,12 @@ For example:
 [query2-kenzie-pgadmin.sql](./queries/query2-kenzie-pgadmin.sql)
 
 *Describe the queries in detail with screenshots of setup and results*
+For this query, I had to add in some data to work with. I first needed to add in Mrs. Smith as a guest.  I then added an occupant named Mr. Smith.  I also added in the hotel they would be reserving a room at.  I then added data into the makes table and had Mrs. Smith make a reservation requesting a double room.  I then added in a room type for double in the room_type table.  I then added in data for room_type_has_reservation connecting a double room type with the reservation made by Mrs. Smith.  I then added in some empty double rooms to the rooms and room_type tables.  I then created a double room that was already filled.  I did this by adding the proper data to the reservation_room file.  
+
 For this query, I selected the room numbers and room types.  To find the rooms that are double that are not yet occupied, I did a LEFT JOIN between the room_reservations table and the rooms table.  I then searched for rooms of type 'Double'.  I then was given a list of unoccupied double rooms.  I chose one of those rooms and wrote an insert query to assign Mrs. Smith her reserved double room.
+
+After I ran that query, added in data to the reservations_rooms and stays table to assign Mrs. Smith a room of type Double.
+
 
 
 ### Query 3
