@@ -13,6 +13,7 @@
 
 
 *Describe any changes since HW7*
+There were a few changes I made to the relational model.  I updated all of the fields in the relational model to match the fields in the create table SQL file.  All changes made to our database model were also reflected in the relational model.  
 
 ## Database creation
 *Link the files here*
