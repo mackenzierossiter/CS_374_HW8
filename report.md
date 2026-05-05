@@ -65,7 +65,7 @@ For this query, I had to add in some data to work with. I first needed to add in
 
 For this query, I selected the room numbers and room types.  To find the rooms that are double that are not yet occupied, I did a LEFT JOIN between the room_reservations table and the rooms table.  I then searched for rooms of type 'Double'.  I then was given a list of unoccupied double rooms.  I chose one of those rooms and wrote an insert query to assign Mrs. Smith her reserved double room.
 
-After I ran that query, added in data to the reservations_rooms and stays table to assign Mrs. Smith a room of type Double.
+After I ran that query, added in data to the reservations_rooms and stays table to assign Mrs. Smith a room of type Double.  In all, for this question I created 2 empty double rooms, 1 filled double room and assigned Mr. and Mrs. Smith one of the empty double rooms.
 
 
 
@@ -94,5 +94,3 @@ For this query, I added data so there was a room that had two occupants in it at
 *Describe the queries in detail with screenshots of setup and results*
 
 This query identifies "frequent travelers" who have completed at least two reservations at two or more different hotel properties during the 2026 calendar year. To test this, I inserted a guest named "Query Five Guest" along with two separate reservations at two distinct hotels (Hotel Panda and Hotel Manatee), each with a corresponding bill. The query joins the guest, makes, reservations, bill, and reservations_rooms tables to aggregate the total spend. The HAVING clause ensures only guests meeting both criteria (multiple reservations and multiple hotel locations) are included in the output.
-
-
