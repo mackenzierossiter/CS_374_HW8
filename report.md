@@ -39,7 +39,7 @@ We changed the scripts to match updated model shown in previous section.
 *Link the files here*
 
 - Add some data: [creat_data.sql](./data/create_data.sql)
-     - [newData-Kenzie-Query2.sql](./data/newData-Kenzie-Query2.sql)
+     - [fanizza_tahir_newData_1&5.sql](./data/fanizza_tahir_newData_1&5.sql)
 
 We changed the data to facilitate the queries, as described in the following sections.  There are additions in the original create_data file as well as a new file with new data additions for a query.
 
